@@ -9,7 +9,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 describe('UserController', () => {
     let userController: UsersController;
     let usersService: UsersService;
-    let userModel: User;
 
     beforeEach(async () => {
         const app: TestingModule = await Test.createTestingModule({
@@ -18,7 +17,7 @@ describe('UserController', () => {
             providers: [
                 UsersService,
                 {
-                    provide: getModelToken('users'),
+                    provide: getModelToken(User.name),
                     useValue: User,
                 },
             ]
